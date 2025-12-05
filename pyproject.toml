@@ -1,0 +1,12 @@
+[project]
+name = "celery-redis"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "celery>=5.6.0",
+    "fastapi>=0.123.5",
+    "redis>=7.1.0",
+    "uvicorn>=0.38.0",
+]

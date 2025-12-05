@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+.env
+.venv/
+venv/
+env/
+pip-log.txt
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+log_celery.txt  # Add this if you don't want to commit the log file
+
+# Your specific unwanted directories (preventative)
+hwp/
+promenade/
+posco_streamlit/
