@@ -1,5 +1,5 @@
-# Celery Redis FastAPI Dummy App
-### The purpose of this app was to build a dummy app using celery for background tasks and redis as a broker (task queue) and backend (result store)
+# Celery Redis FastAPI App
+### The purpose of this app was to build an app using celery for background tasks and redis as a broker (task queue) and backend (result store)
 
 ## Setup
 - Install uv using "curl -LsSf https://astral.sh/uv/install.sh | sh" command
