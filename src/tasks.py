@@ -2,6 +2,11 @@ import time
 import hashlib
 import numpy as np
 import pandas as pd
+import aiofiles
+import asyncio
+import os
+from datetime import datetime
+
 from functools import lru_cache
 from .celery_app import celery, PriorityTask
 from .config import TASK_CONFIG
@@ -246,9 +251,7 @@ async def async_io_task1(urls: list, timeout: int = 10) -> dict:
     Async I/O Task 1: Fetch multiple web pages concurrently
     Uses aiohttp for non-blocking HTTP requests
     """
-    import aiohttp
-    import asyncio
-    from datetime import datetime
+
 
     print(f"[Async IO 1] Started fetching {len(urls)} URLs")
     start_time = datetime.now()
@@ -296,10 +299,7 @@ async def async_io_task2(file_paths: list, operation: str = 'read') -> dict:
     Async I/O Task 2: File operations with asyncio
     Simulates reading/writing multiple files concurrently
     """
-    import aiofiles
-    import asyncio
-    import os
-    from datetime import datetime
+
 
     print(f"[Async IO 2] Started {operation} on {len(file_paths)} files")
     start_time = datetime.now()
