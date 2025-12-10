@@ -15,24 +15,12 @@ CELERY_CONFIG = {
     "broker_url": f"redis://{SYSTEM_CONFIG['redis_host']}:{SYSTEM_CONFIG['redis_port']}/{SYSTEM_CONFIG['redis_db_celery']}",
     "result_backend": f"redis://{SYSTEM_CONFIG['redis_host']}:{SYSTEM_CONFIG['redis_port']}/{SYSTEM_CONFIG['redis_db_results']}",
 
-    # Queue configuration with priorities
-    "task_queues": {
-        "cpu_normal": {"exchange": "cpu", "routing_key": "cpu.normal"},
-        "cpu_high": {"exchange": "cpu", "routing_key": "cpu.high"},
-    },
-
-    # Task routes
-    "task_routes": {
-        "tasks.cpu_heavy_task1": {"queue": "cpu_normal"},
-        "tasks.cpu_heavy_task2": {"queue": "cpu_normal"},
-        "tasks.cpu_priority_task": {"queue": "cpu_high"},
-    },
 
     # Worker configuration
     "worker_concurrency": SYSTEM_CONFIG["cpu_cores"],  # 1 per core for CPU tasks
     "worker_prefetch_multiplier": 1,
     "worker_max_tasks_per_child": 100,
-
+    "worker_disable_rate_limits": True,
     # Task settings
     "task_serializer": "json",
     "accept_content": ["json"],
@@ -42,6 +30,19 @@ CELERY_CONFIG = {
     "task_track_started": True,
     "task_time_limit": 300,  # 5 minutes
     "task_soft_time_limit": 280,
+    "result_expires": 3600,  # Results expire after 1 hour
+    "task_default_priority": 5,  # Default priority for tasks
+    # Broker Settings
+    "broker_connection_retry_on_startup": True,
+    "broker_pool_limit": 100,
+    "broker_connection_max_retries": None,
+    # -----------------------
+
+    # Priority setup for Redis
+    "broker_transport_options": {
+        'priority_steps': [0,5,9],
+        'queue_order_strategy': 'priority',
+    }
 }
 
 # FastAPI Configuration

@@ -13,6 +13,7 @@ from .config import TASK_CONFIG
     bind=True,
     base=PriorityTask,
     queue='cpu_normal',
+    priority=5,
     max_retries=TASK_CONFIG['max_retries'],
     default_retry_delay=TASK_CONFIG['retry_delay'],
     time_limit=TASK_CONFIG['cpu_task_timeout'],
@@ -97,6 +98,7 @@ def cpu_heavy_task1(self, data: dict) -> dict:
     bind=True,
     base=PriorityTask,
     queue='cpu_normal',
+    priority=0,
     max_retries=TASK_CONFIG['max_retries'],
     default_retry_delay=TASK_CONFIG['retry_delay'],
     time_limit=TASK_CONFIG['cpu_task_timeout'],
@@ -180,7 +182,7 @@ def cpu_heavy_task2(self, text_data: str, iterations: int = 1000) -> dict:
     default_retry_delay=2,
     time_limit=TASK_CONFIG['priority_task_timeout'],
     soft_time_limit=TASK_CONFIG['priority_task_timeout'] - 2,
-    priority=9,  # High priority (0-9, 9 is highest in Redis)
+    priority=0,  # High priority (0-9, 9 is highest in Redis)
     name='tasks.cpu_priority_task'
 )
 def cpu_priority_task(self, urgent_data: dict) -> dict:

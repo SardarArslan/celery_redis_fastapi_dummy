@@ -191,7 +191,7 @@ async def process_text(
         task = cpu_heavy_task2.apply_async(
             args=[text, iterations],
             task_id=task_id,
-            priority=5  # Normal priority
+            priority=0  # Normal priority
         )
 
         return {
@@ -222,7 +222,7 @@ async def priority_process(data: Dict[str, Any] = Body(...)):
         task = cpu_priority_task.apply_async(
             args=[data],
             task_id=task_id,
-            priority=9,  # Highest priority
+            priority=0,  # Highest priority
             queue='cpu_high'
         )
 
