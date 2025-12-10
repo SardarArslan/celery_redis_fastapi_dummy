@@ -3,7 +3,7 @@
 
 ## Setup
 - Install uv using "curl -LsSf https://astral.sh/uv/install.sh | sh" command
-- Clone the repo using "git clone https://github.com/SardarArslan/celery_redis_fastapi_dummy.git" and run "cd celery_redis_fastapi_dummy" in terminal
+- Clone the repo using "git clone https://github.com/SardarArslan/celery_redis_fastapi.git" and run "cd celery_redis_fastapi" in terminal
 - Run uv sync command in terminal
 - Run "brew install redis" in terminal (macOS)
 - Start the server using "brew services start redis" inm terminal
